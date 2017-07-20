@@ -1,16 +1,13 @@
 package ru.kochanovskiy.convertingrest.Services;
 
-import com.sun.org.apache.bcel.internal.util.ClassPath;
 import org.apache.log4j.Logger;
 
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class ConverterService {
 
     static private Logger logger = Logger.getLogger(ConverterService.class);
-
+    private static final String FILENAME = "C:\\Users\\Денис\\Desktop\\ConvertingREST\\src\\main\\resources\\response.json";
     private static String outputString = null;
 
     /**
@@ -101,28 +98,28 @@ public class ConverterService {
      * Saving results
      */
     public void saveResult(String decimalRu, String octalRu, String decimalEn, String octalEn){
+
         String text = "{\n" +
                 "\"result\": {\n" +
                 "  \"en\": {\n" +
-                "     \"10\": " + decimalEn + ",    \n" +
-                "     \"8\": " + octalEn + " \n" +
+                "     \"10\": \"" + decimalEn + "\",\n" +
+                "     \"8\": \"" + octalEn + "\"\n" +
                 "   },\n" +
                 "  \"ru\": {\n" +
-                "     \"10\": " + decimalRu + ",   \n" +
-                "     \"8\": " + octalRu + " \n" +
+                "     \"10\": \"" + decimalRu + "\",\n" +
+                "     \"8\": \"" + octalRu + "\"\n" +
                 "   }\n" +
                 "  }\n" +
-                "}\n"; // строка для записи
+                "}\n";
 
-        try(FileOutputStream fos = new FileOutputStream("C:\\Users\\Денис\\Desktop\\ConvertingREST\\response.txt"))
-        {
-            byte[] buffer = text.getBytes();
-
-            fos.write(buffer, 0, buffer.length);
-        }
-        catch(IOException ex){
-
-            System.out.println(ex.getMessage());
+        try {
+            try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(FILENAME), "UTF8"))) {
+                bw.write(text);
+                bw.flush();
+            }
+        } catch (IOException ex) {
+            logger.trace("IOException" + ex);
         }
     }
 }

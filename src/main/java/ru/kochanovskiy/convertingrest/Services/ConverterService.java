@@ -1,6 +1,15 @@
 package ru.kochanovskiy.convertingrest.Services;
 
+import com.sun.org.apache.bcel.internal.util.ClassPath;
+import org.apache.log4j.Logger;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ConverterService {
+
+    static private Logger logger = Logger.getLogger(ConverterService.class);
 
     private static String outputString = null;
 
@@ -88,4 +97,32 @@ public class ConverterService {
         return Integer.toString(convertNumber, notation);
     }
 
+    /**
+     * Saving results
+     */
+    public void saveResult(String decimalRu, String octalRu, String decimalEn, String octalEn){
+        String text = "{\n" +
+                "\"result\": {\n" +
+                "  \"en\": {\n" +
+                "     \"10\": " + decimalEn + ",    \n" +
+                "     \"8\": " + octalEn + " \n" +
+                "   },\n" +
+                "  \"ru\": {\n" +
+                "     \"10\": " + decimalRu + ",   \n" +
+                "     \"8\": " + octalRu + " \n" +
+                "   }\n" +
+                "  }\n" +
+                "}\n"; // строка для записи
+
+        try(FileOutputStream fos = new FileOutputStream("C:\\Users\\Денис\\Desktop\\ConvertingREST\\response.txt"))
+        {
+            byte[] buffer = text.getBytes();
+
+            fos.write(buffer, 0, buffer.length);
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+    }
 }

@@ -34,10 +34,17 @@ public class ConverterController {
 
         ConverterService converterService = new ConverterService();
 
-        model.addAttribute("decimalRu", converterService.decimalParser(Integer.toString(enteredNumber), unitsRu, tensRu, hundredsRu));
-        model.addAttribute("octalRu", converterService.decimalParser(converterService.octalConversion(enteredNumber), unitsRu, tensRu, hundredsRu));
-        model.addAttribute("decimalEn", converterService.decimalParser(Integer.toString(enteredNumber), unitsEn, tensEn, hundredsEn));
-        model.addAttribute("octalEn", converterService.decimalParser(converterService.octalConversion(enteredNumber), unitsEn, tensEn, hundredsEn));
+        String decimalRu = converterService.decimalParser(Integer.toString(enteredNumber), unitsRu, tensRu, hundredsRu);
+        String octalRu = converterService.decimalParser(converterService.octalConversion(enteredNumber), unitsRu, tensRu, hundredsRu);
+        String decimalEn = converterService.decimalParser(Integer.toString(enteredNumber), unitsEn, tensEn, hundredsEn);
+        String octalEn = converterService.decimalParser(converterService.octalConversion(enteredNumber), unitsEn, tensEn, hundredsEn);
+
+        converterService.saveResult(decimalRu, octalRu, decimalEn, octalEn);
+
+        model.addAttribute("decimalRu", decimalRu);
+        model.addAttribute("octalRu", octalRu);
+        model.addAttribute("decimalEn", decimalEn);
+        model.addAttribute("octalEn", octalEn);
 
         return "converter";
     }

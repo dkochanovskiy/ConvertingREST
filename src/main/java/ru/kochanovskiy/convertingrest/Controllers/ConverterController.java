@@ -11,6 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class ConverterController {
 
+    private String unitsRu[] = {"ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
+            "десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"};
+    private String unitsEn[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+            "ten", "eleven", "twelve", "thirteen ", "fourteen", "fifteen ", "sixteen", "seventeen", "eighteen", "nineteen"};
+    private String tensRu[] = {"", "", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"};
+    private String tensEn[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    private String hundredsRu[] = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
+    private String hundredsEn[] = {"", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"};
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String converter() {
         return "converter";
@@ -20,17 +29,6 @@ public class ConverterController {
     public String getNumber(ModelMap model, HttpServletRequest req) {
 
         int enteredNumber = Integer.parseInt(req.getParameter("number"));
-
-        String unitsRu[] = {"ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
-                "десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"};
-
-        String unitsEn[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                "ten", "eleven", "twelve", "thirteen ", "fourteen", "fifteen ", "sixteen", "seventeen", "eighteen", "nineteen"};
-
-        String tensRu[] = {"", "", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"};
-        String tensEn[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-        String hundredsRu[] = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
-        String hundredsEn[] = {"", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"};
 
         ConverterService converterService = new ConverterService();
 

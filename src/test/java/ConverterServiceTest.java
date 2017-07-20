@@ -1,5 +1,4 @@
 import ru.kochanovskiy.convertingrest.Services.ConverterService;
-
 import org.junit.Test;
 
 public class ConverterServiceTest {

@@ -9,7 +9,7 @@
 </head>
 <body>
 <br/>
-<form class="form-horizontal" action="/" method="post">
+<form class="form-horizontal" action="result.jsp" method="post">
     <div class="form-group">
         <label for="number" class="col-sm-2 control-label">Введите число / Enter the number</label>
         <div class="col-sm-2">
@@ -22,9 +22,5 @@
         </div>
     </div>
 </form>
-<p>${decimalRu}</p>
-<p>${octalRu}</p>
-<p>${decimalEn}</p>
-<p>${octalEn}</p>
 </body>
 </html>

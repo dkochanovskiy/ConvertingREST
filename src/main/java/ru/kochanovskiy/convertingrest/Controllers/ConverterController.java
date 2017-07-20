@@ -39,11 +39,6 @@ public class ConverterController {
 
         converterService.saveResult(decimalRu, octalRu, decimalEn, octalEn);
 
-        model.addAttribute("decimalRu", decimalRu);
-        model.addAttribute("octalRu", octalRu);
-        model.addAttribute("decimalEn", decimalEn);
-        model.addAttribute("octalEn", octalEn);
-
         return "converter";
     }
 }

@@ -8,19 +8,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<br/>
-<form class="form-horizontal" action="result.jsp" method="post">
-    <div class="form-group">
-        <label for="number" class="col-sm-2 control-label">Введите число / Enter the number</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="number" name="number" placeholder="">
-        </div>
+<div class="container">
+    <div class="row">
+        <br/>
+        <form class="form-horizontal" action="result.jsp" method="post">
+            <div class="form-group">
+                <label for="number" class="col-md-2 control-label">Введите число / Enter the number</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="number" name="number" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-2">
+                    <button type="submit" class="btn btn-success">Конвертировать / Converting</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Конвертировать / Converting</button>
-        </div>
-    </div>
-</form>
+</div>
 </body>
 </html>
